@@ -17,8 +17,8 @@ def get_connection():
             database=os.environ.get("DB_DATABASE") or "nettruyen_db",
         )
 
-        if conn:
-            print("Successfully connected to the database.")
+        # if conn:
+        #     print("Successfully connected to the database.")
 
         return conn
     except Exception as e:

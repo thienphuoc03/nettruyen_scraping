@@ -85,7 +85,7 @@ def create_tables():
 
             print("Tables successfully created.")
 
-            return
+        return
     except Exception as e:
         print("Error create table:", e)
 

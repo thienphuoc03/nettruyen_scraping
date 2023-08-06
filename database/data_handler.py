@@ -14,11 +14,12 @@ def save_category(categories):
 
             # Commit changes and close connection
             conn.commit()
-            cursor.close()
-            conn.close()
-            print("*.*Successfully*.*")
 
-            return
+        cursor.close()
+        conn.close()
+        print("*.*Successfully*.*")
+
+        return
     except Exception as e:
         print("Error insert category: ", e)
 
@@ -26,7 +27,6 @@ def save_category(categories):
 def save_comic(comics):
     try:
         conn = get_connection()
-        print(comics)
         if conn:
             print("Inserting data of COMIC to MySQL...")
             cursor = conn.cursor()
@@ -37,10 +37,36 @@ def save_comic(comics):
 
             # Commit changes and close connection
             conn.commit()
-            cursor.close()
-            conn.close()
-            print("*.*Successfully*.*")
 
-            return
+        cursor.close()
+        conn.close()
+        print("*.*Successfully*.*")
+
+        return
     except Exception as e:
         print("Error:", e)
+
+
+def save_comics_categories(comic_id, list_category_id):
+    try:
+        conn = get_connection()
+
+        if conn:
+            # print("Insert data comics_categories")
+            cursor = conn.cursor()
+
+            for category_id in list_category_id:
+                insert_query = "INSERT INTO comics_categories (comic_id, category_id) VALUES (%s, %s)"
+                values = (comic_id, category_id)
+
+                cursor.execute(insert_query, values)
+
+                conn.commit()
+
+        cursor.close()
+        conn.close()
+        # print("*.*Successfully*.*")
+
+        return
+    except Exception as e:
+        print("Error insert comics_categories: ", e)

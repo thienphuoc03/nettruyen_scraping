@@ -2,7 +2,7 @@ from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
 
 
-def comic_images_chapter_scrape(url):
+def comic_chapter_images_scrape(url):
     try:
         req = Request(url, headers={"User-Agent": "XYZ/3.0"})
         res = urlopen(req).read()

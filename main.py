@@ -16,10 +16,10 @@ url = os.environ.get("WEBSITE_URL") or "https://www.nettruyenio.com/"
 # Scrape the website
 # categories
 categories = category_scrape(url + "tim-truyen")
-# if categories:
-#     save_category(categories)
+if categories:
+    save_category(categories)
 
-# # comics
+# comics
 if categories:
     comics = comic_scrape(url + "tim-truyen")
-# comics = comic_scrape(url + "tim-truyen")
+comics = comic_scrape(url + "tim-truyen")
