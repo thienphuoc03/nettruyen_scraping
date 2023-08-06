@@ -1,4 +1,4 @@
-from database.connection import get_connection
+from connection import get_connection
 
 
 def create_tables():
@@ -31,7 +31,7 @@ def create_tables():
                 status VARCHAR(255),
                 view INT,
                 rating FLOAT,
-                Followers INT,
+                followers INT,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )
@@ -88,3 +88,7 @@ def create_tables():
             return
     except Exception as e:
         print("Error create table:", e)
+
+
+if __name__ == "__main__":
+    create_tables()

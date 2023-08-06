@@ -1,18 +1,20 @@
 import os
-import mysql.connector
+from os.path import join, dirname
 from dotenv import load_dotenv
+import mysql.connector
 
-load_dotenv()
+dotenv_path = join(dirname(__file__), ".env")
+load_dotenv(dotenv_path)
 
 
 def get_connection():
     try:
         conn = mysql.connector.connect(
-            host=os.getenv("DB_HOST") or "localhost",
-            port=os.getenv("DB_POST") or 3309,
-            user=os.getenv("DB_USER") or "root",
-            password=os.getenv("DB_PASSWORD") or "123456",
-            database=os.getenv("DB_DATABASE") or "db_nettruyen",
+            host=os.environ.get("DB_HOST") or "localhost",
+            port=os.environ.get("DB_POST") or 3306,
+            user=os.environ.get("DB_USER") or "root",
+            password=os.environ.get("DB_PASSWORD") or "root",
+            database=os.environ.get("DB_DATABASE") or "nettruyen_db",
         )
 
         if conn:
